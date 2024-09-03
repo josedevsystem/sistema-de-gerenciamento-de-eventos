@@ -1,0 +1,54 @@
+O projeto "Sistema de Gerenciamento de Eventos" é uma solução para a administração e controle de eventos, participantes e inscrições em uma organização. Este sistema visa facilitar a gestão de eventos ao fornecer uma estrutura de banco de dados que permite a criação, atualização, consulta e exclusão de informações relacionadas a eventos e suas inscrições.
+
+O banco de dados é projetado para armazenar informações essenciais sobre eventos, participantes e inscrições, e é implementado usando comandos SQL padrão. A estrutura do banco de dados inclui tabelas para eventos, participantes e inscrições, com relacionamentos apropriados para garantir a integridade referencial.
+
+
+# Sistema de Gerenciamento de Eventos
+
+Este projeto envolve a criação de um sistema de gerenciamento de eventos, que permite o controle de eventos, participantes e inscrições. O sistema é implementado com um banco de dados MySQL e utiliza SQL para criar, manipular e consultar os dados.
+
+## Estrutura do Banco de Dados
+
+O banco de dados **GerenciamentoEventos** contém as seguintes tabelas:
+
+- **Eventos**: Armazena informações sobre eventos, incluindo ID, nome, data, local e descrição.
+- **Participantes**: Armazena dados dos participantes, como ID, nome, e-mail e telefone.
+- **Inscricoes**: Registra inscrições de participantes em eventos, com referências às tabelas de eventos e participantes.
+
+## Comandos SQL
+
+### Criação do Banco de Dados e Tabelas
+
+```sql
+-- Criação do Banco de Dados
+CREATE DATABASE GerenciamentoEventos;
+USE GerenciamentoEventos;
+
+-- Criação das Tabelas
+
+-- Tabela de Eventos
+CREATE TABLE Eventos (
+    EventoID INT AUTO_INCREMENT PRIMARY KEY,
+    NomeEvento VARCHAR(100) NOT NULL,
+    DataEvento DATE NOT NULL,
+    LocalEvento VARCHAR(100),
+    Descricao TEXT
+);
+
+-- Tabela de Participantes
+CREATE TABLE Participantes (
+    ParticipanteID INT AUTO_INCREMENT PRIMARY KEY,
+    NomeParticipante VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Telefone VARCHAR(15)
+);
+
+-- Tabela de Inscrições
+CREATE TABLE Inscricoes (
+    InscricaoID INT AUTO_INCREMENT PRIMARY KEY,
+    EventoID INT,
+    ParticipanteID INT,
+    DataInscricao DATE NOT NULL,
+    FOREIGN KEY (EventoID) REFERENCES Eventos(EventoID),
+    FOREIGN KEY (ParticipanteID) REFERENCES Participantes(ParticipanteID)
+);
