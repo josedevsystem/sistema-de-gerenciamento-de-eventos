@@ -1,0 +1,30 @@
+# Ignorar arquivos temporários do sistema
+*.log
+*.tmp
+*.swp
+
+# Ignorar arquivos de configuração local
+*.env
+
+# Ignorar diretórios de banco de dados temporários
+db/
+
+# Ignorar arquivos de backup do banco de dados
+*.sql.gz
+*.sql.bak
+
+# Ignorar arquivos de IDE ou editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# Ignorar arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de versão
+*.bak
+*.old
+*.orig
